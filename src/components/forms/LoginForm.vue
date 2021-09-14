@@ -1,10 +1,10 @@
 <template lang="pug">
-h1 Login
+form.login__wrapper(@submit.prevent="doLogin") 
 </template>
 
 <script>
 export default {
-  name: "Login",
+  name: "LoginForm",
 };
 </script>
 

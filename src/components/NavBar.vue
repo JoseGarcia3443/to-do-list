@@ -25,6 +25,7 @@ export default {
 
 <style lang="scss" scoped>
 nav {
+  background-color: #ffffff;
   padding: 20px 0;
   box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.2);
@@ -33,5 +34,6 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 5;
 }
 </style>

@@ -3,8 +3,8 @@
   nav-bar
   transition(
     mode="out-in",
-    enter-active-class="animate__animated animate__fadeInRight",
-    leave-active-class="animate__animated animate__fadeOutLeft"
+    enter-active-class="animate__animated animate__fadeIn",
+    leave-active-class="animate__animated animate__fadeOut"
   )
     router-view
 </template>
@@ -20,6 +20,7 @@ export default {
 
 <style lang="scss">
 @import "./style/simple-grid/bootstrap-grid.css";
+@import "./style/inputForms.scss";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Work+Sans:wght@200;300;400&display=swap");
 
 ::-webkit-scrollbar {
