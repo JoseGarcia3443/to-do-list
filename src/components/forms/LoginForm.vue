@@ -21,6 +21,8 @@ form.login__wrapper.col-12.col-md-8.col-lg-5(@submit.prevent="doLogin")
     .error(v-if="$v.login.password.$model && !$v.login.password.minLength") Password must contain at least 8 characters
   .form__group
     button(type="submit", :disabled="$v.login.$invalid") Login
+  .form__group
+    router-link(to="/sign-up") Do not you have an account yet?
 </template>
 
 <script>
@@ -53,6 +55,14 @@ export default {
       password: "",
     },
   }),
+  watch: {
+    isAuthenticated(bool) {
+      if (bool) this.$router.push('/tasks-manager')
+    }
+  },
+  created() {
+    if (this.isAuthenticated) this.$router.push('/tasks-manager')
+  },
   computed: {
     ...mapGetters(["isAuthenticated"]),
   },

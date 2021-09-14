@@ -17,6 +17,10 @@ export default {
 <style lang="scss" scoped>
 section.login {
   padding: 5rem 0;
+  background: url("../../assets/wave.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   .container {
     .row {
       min-height: 100vh;

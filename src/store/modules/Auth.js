@@ -23,9 +23,10 @@ const mutations = {
 
 const actions = {
   registerUser({ commit }, payload) {
+    const rand = Math.floor(Math.random() * 100);
     try {
-      commit('REGISTER_USER', payload)
-      commit('SET_USER', payload)
+      commit('REGISTER_USER', { id: rand, ...payload})
+      commit('SET_USER', { id: rand, ...payload})
       Vue.swal({
         toast: true,
         position: 'top-end',
@@ -88,7 +89,28 @@ const actions = {
         icon: 'success',
         title: 'Success Login'
       })
+    } else {
+      Vue.swal({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3500,
+        timerProgressBar: true,
+        icon: 'error',
+        title: 'Incorrect Credentials'
+      })
     }
+  },
+  userNotFound() {
+    Vue.swal({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3500,
+      timerProgressBar: true,
+      icon: 'error',
+      title: 'Incorrect Credentials'
+    })
   }
 };
 

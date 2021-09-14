@@ -39,6 +39,8 @@ form.signup__wrapper.col-12.col-md-8.col-lg-5(@submit.prevent="register")
     .error(v-if="$v.form.password_confirmed.$model && !$v.form.password_confirmed.sameAsPassword") Passwords do not match
   .form__group
     button(type="submit" :disabled="$v.form.$invalid") Register
+  .form__group
+    router-link(to="/login") Do you already have an account?
 </template>
 
 <script>

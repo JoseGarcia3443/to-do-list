@@ -20,9 +20,9 @@ export default {
 nav {
   background-color: #ffffff;
   padding: 20px 0;
-  box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
   left: 0;
