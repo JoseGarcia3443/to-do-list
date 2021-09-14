@@ -3,7 +3,7 @@ nav
   .container
     .row.no-gutters.justify-content-between.align-items-center
       logo
-      navigation-menu
+      navigation-menu(v-if="!isAuthenticated")
 </template>
 
 <script>
@@ -12,14 +12,7 @@ export default {
   components: {
     logo: () => import("@/components/Logo.vue"),
     'navigation-menu': () => import("@/components/aditionals/NavigationMenu.vue")
-  },
-  data: () => ({
-    links: [
-      {
-        name: "home",
-      },
-    ],
-  }),
+  }
 };
 </script>
 

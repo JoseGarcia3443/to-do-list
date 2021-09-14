@@ -1,5 +1,5 @@
 <template lang="pug">
-section.login
+section.sign-up-form
   .container
     .row.no-gutters
       sign-up-form
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-section.login {
+section.sign-up-form {
   padding: 5rem 0;
   .container {
     .row {

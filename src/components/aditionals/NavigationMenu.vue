@@ -1,18 +1,36 @@
 <template lang="pug">
 .navigation
   ul.navigation__wrapper
-    li.navigation__item
+    li.navigation__item(v-if="!isAuthenticated")
       router-link(to="/login")
         span Login
         i.far.fa-user
-    li.navigation__item
+    li.navigation__item(v-if="!isAuthenticated")
       router-link(to="/sign-up")
         span SignUp
         i.fas.fa-sign-in-alt 
+    li.navigation__item(v-if="isAuthenticated")
+      a(href="#" @click.prevent="doLogout")
+        span Logout
+        i.fas.fa-sign-out-alt
 </template>
 
 <script>
-export default {};
+import { createNamespacedHelpers } from 'vuex'
+const { mapGetters, mapActions } = createNamespacedHelpers('Auth')
+
+export default {
+  name: 'NavigationMenu',
+  computed: {
+    ...mapGetters(['isAuthenticated'])
+  },
+  methods: {
+    ...mapActions(['logOut']),
+    doLogout() {
+      this.logOut()
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
