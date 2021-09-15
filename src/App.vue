@@ -33,4 +33,10 @@ export default {
   font-family: "Roboto", sans-serif;
   // font-family: 'Work Sans', sans-serif;
 }
+
+.swal2-title {
+  font-size: 1rem !important;
+  font-family: "Roboto", sans-serif !important;
+  color: #000000 !important;
+}
 </style>
