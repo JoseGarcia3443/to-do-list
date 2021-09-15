@@ -15,7 +15,7 @@
     leave-active-class="animate__animated animate__fadeOut"
   )
   .modal(v-if="isModalTaskVisible")
-    form.tasks__form
+    form.tasks__form(@submit.prevent="saveRecord")
       .form__group
         label(for="task") Your Task:
         input#task(
@@ -25,7 +25,7 @@
         )
         //- .error(v-if="$v.login.email.$model && $v.login.email.$invalid") Valid email is required
       .form__group
-        button(type="submit") {{label}}
+        button(type="submit" :disabled="!hasText") {{ label }}
 </template>
 
 <script>
@@ -45,13 +45,21 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["isModalTaskVisible"]),
+    ...mapGetters(["isModalTaskVisible", "user"]),
     label() {
-        return this.isAdd ? 'Save' : 'Update'
-    }
+      return this.isAdd ? "Save" : "Update";
+    },
+    hasText() {
+      return this.form.task.length > 0;
+    },
   },
   methods: {
-    ...mapActions(["setModalTaskVisible"]),
+    ...mapActions(["setModalTaskVisible", "addRecord", "updateRecord"]),
+    saveRecord() {
+      this.isAdd
+        ? this.addRecord({ user_id: this.user.id, status: 1, ...this.form })
+        : this.updateRecord(this.form);
+    },
   },
 };
 </script>
