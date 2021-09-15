@@ -1,6 +1,6 @@
 <template lang="pug">
 section.tasks__wrapper
-  task-modal(:form="form" :isAdd="isModalAdd")
+  task-modal(:form="form", :isAdd="isModalAdd")
   .container
     .row.no-gutters.justify-content-center.justify-content-between
       .action__wrapper
@@ -10,37 +10,35 @@ section.tasks__wrapper
       .column__task.col-12.col-md-5
         span In proccess
         .tasks__in__process
-          transition-group(
+          transition-group.list__tasks(
             appear,
             mode="out-in",
             enter-active-class="animate__animated animate__fadeInRight",
-            leave-active-class="animate__animated animate__fadeOutRight"
+            leave-active-class="animate__animated animate__fadeOutRight",
             tag="ul"
-            class="list__tasks"
           )
             task-item(
               v-for="(task, index) in userTasks",
               :key="index",
-              :task="task"
-              :style="`--animate-duration: ${(index + 1)*200}ms`"
+              :task="task",
+              :style="`--animate-duration: ${(index + 1) * 200}ms`",
               @onEdit="editRecord"
-          )
+            )
       .column__task.col-12.col-md-5
         span Done
         .tasks_done
-          transition-group(
+          transition-group.list__tasks(
             appear,
             mode="out-in",
             enter-active-class="animate__animated animate__fadeInLeft",
-            leave-active-class="animate__animated animate__fadeOutLeft"
+            leave-active-class="animate__animated animate__fadeOutLeft",
             tag="ul"
-            class="list__tasks"
           )
             task-item(
               v-for="(task, index) in userDoneTasks",
               :key="index",
-              :task="task"
-              :style="`--animate-duration: ${(index + 1)*200}ms`"
+              :task="task",
+              :style="`--animate-duration: ${(index + 1) * 200}ms`"
             )
 </template>
 
@@ -56,9 +54,9 @@ export default {
   },
   data: () => ({
     form: {
-      task: ''
+      task: "",
     },
-    isModalAdd: true
+    isModalAdd: true,
   }),
   created() {
     !this.isAuthenticated ? this.$router.push("/login") : this.loadRecords();
@@ -69,20 +67,20 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["isAuthenticated", "userTasks", 'userDoneTasks']),
+    ...mapGetters(["isAuthenticated", "userTasks", "userDoneTasks"]),
   },
   methods: {
     ...mapActions(["loadRecords", "setModalTaskVisible"]),
     addRecord() {
-      this.isModalAdd = true
-      this.form = {task: ''}
-      this.setModalTaskVisible(true)
+      this.isModalAdd = true;
+      this.form = { task: "" };
+      this.setModalTaskVisible(true);
     },
     editRecord(task) {
-      this.isModalAdd = false
-      this.form = task
-      this.setModalTaskVisible(true)
-    }
+      this.isModalAdd = false;
+      this.form = task;
+      this.setModalTaskVisible(true);
+    },
   },
 };
 </script>
@@ -91,6 +89,10 @@ export default {
 section.tasks__wrapper {
   margin-top: 50px;
   padding: 5rem 0;
+  background: url("../assets/wave.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   .container {
     .row {
       min-height: 100vh;
@@ -129,6 +131,10 @@ section.tasks__wrapper {
           border-radius: 0.5em;
           padding: 10px;
           overflow-x: hidden;
+          background-color: #ffffff;
+          box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.42);
+          -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+          -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
           .list__tasks {
             padding: 0;
             margin: 0;

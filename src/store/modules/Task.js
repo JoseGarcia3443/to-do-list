@@ -16,34 +16,39 @@ const mutations = {
     state.tasks = payload
   },
   UPDATE_RECORD(state, payload) {
-    const idx = state.tasks.findIndex((t) => t.task === payload.task);
+    const idx = state.tasks.findIndex((t) => t.id === payload.id);
     if (idx === -1) return;
     Vue.set(state.tasks, idx, payload);
   },
+  UPDATE_USER_TASK(state, payload) {
+    const idx = state.userTasks.findIndex((t) => t.id === payload.id);
+    if (idx === -1) return;
+    Vue.set(state.userTasks, idx, payload);
+  },
   DELETE_RECORD(state, payload) {
-    const idx = state.tasks.findIndex((t) => t.task === payload.task);
+    const idx = state.tasks.findIndex((t) => t.id === payload.id);
     if (idx === -1) return;
     Vue.delete(state.tasks, idx);
   },
   DELETE_USER_TASK(state, payload) {
-    const idx = state.userTasks.findIndex((t) => t.task === payload.task);
+    const idx = state.userTasks.findIndex((t) => t.id === payload.id);
     if (idx === -1) return;
     Vue.delete(state.userTasks, idx);
   },
   DELETE_DONE_TASK(state, payload) {
-    const idx = state.userDoneTasks.findIndex((t) => t.task === payload.task);
+    const idx = state.userDoneTasks.findIndex((t) => t.id === payload.id);
     if (idx === -1) return;
     Vue.delete(state.userDoneTasks, idx);
   },
   SET_USER_TASKS(state, payload) {
     state.userTasks.push(payload)
-    const idx = state.userDoneTasks.findIndex(t => t.task === payload.task);
+    const idx = state.userDoneTasks.findIndex(t => t.id === payload.id);
     if (idx === -1) return;
     Vue.delete(state.userDoneTasks, idx);
   },
   SET_DONE_TASKS(state, payload) {
     state.userDoneTasks.push(payload)
-    const idx = state.userTasks.findIndex(t => t.task === payload.task);
+    const idx = state.userTasks.findIndex(t => t.id === payload.id);
     if (idx === -1) return;
     Vue.delete(state.userTasks, idx);
   },
@@ -83,9 +88,10 @@ const actions = {
     }
   },
   addRecord({ commit }, payload) {
+    const rand = Math.floor(Math.random() * 10000);
     try {
-      commit('ADD_RECORD', payload)
-      commit('SET_USER_TASKS', payload)
+      commit('ADD_RECORD', {id: rand, ...payload})
+      commit('SET_USER_TASKS', {id: rand, ...payload})
       commit('SET_MODAL_TASK_VISIBLE', false)
       Vue.swal({
         toast: true,
@@ -95,6 +101,32 @@ const actions = {
         timerProgressBar: true,
         icon: 'success',
         title: 'Task saved'
+      })
+    } catch (error) {
+      Vue.swal({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3500,
+        timerProgressBar: true,
+        icon: 'error',
+        title: error
+      })
+    }
+  },
+  updateRecord({ commit }, payload) {
+    try {
+      commit('UPDATE_RECORD', payload)
+      commit('UPDATE_USER_TASK', payload)
+      commit('SET_MODAL_TASK_VISIBLE', false)
+      Vue.swal({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3500,
+        timerProgressBar: true,
+        icon: 'success',
+        title: 'Task updated succesfully'
       })
     } catch (error) {
       Vue.swal({
