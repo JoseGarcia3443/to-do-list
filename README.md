@@ -6,7 +6,7 @@ https://to-do-list-m-y-t.netlify.app/tasks-manager
 
 ### Details
 
-this is a very small project thata i developed for a frontend position, its built using a javascript framework (VueJS). This is a very small project thata i developed for a frontend position, its built using a javascript framework (VueJS). This project is a little Web Site where you can create, update, delete, and general management your tasks, this project save the data on localStorage only for demo purposes. Before you management your tasks you need create an acount if dont have. The views have a protection if you dont loggin you dont have acces to managed your tasks.
+this is a very small project thata i developed for a frontend position, its built using a javascript framework (VueJS). This is a very small project that i developed for a frontend position, its built using a javascript framework (VueJS). This project is a little Web Site where you can create, update, delete, and general management your tasks, this project save the data on localStorage only for demo purposes. Before you management your tasks you need create an acount if dont have. The views have a protection if you dont loggin you dont have acces to managed your tasks.
 
 ### What do I use in this project?
 
